@@ -1,0 +1,10 @@
+# env files
+.env
+
+# node_modules
+client/node_modules/
+server/node_modules/
+
+# lock files
+client/package-lock.json
+server/package-lock.json
