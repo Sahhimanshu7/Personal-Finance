@@ -10,7 +10,7 @@ export const createUser = async (req,res) => {
     // Creating the user
         try {
           const newUser = new User({
-            username: req.body.username,
+            userName: req.body.userName,
             password: hashedPassword,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -29,7 +29,7 @@ export const createUser = async (req,res) => {
 // login 
 export const loginUser = async (req,res) =>{
   try {
-    const user = await User.findOne({username:req.body.username});
+    const user = await User.findOne({userName:req.body.userName});
         if(user){
            const validPassword = await bcryptjs.compare(req.body.password, user.password);
           if(validPassword){
@@ -42,5 +42,19 @@ export const loginUser = async (req,res) =>{
         }
   } catch (error) {
     throw new Error("Error login" + error);
+  }
+}
+
+// search for user
+export const findUser = async (req,res) => {
+  try {
+    const user = await User.findOne({userName:req.params.userName});
+    if(user){
+      res.status(200).json("Username exists!");
+    }else {
+      res.status(400).json("Username not found!");
+    }
+  } catch (error) {
+    res.send(500).json("No user found");
   }
 }
