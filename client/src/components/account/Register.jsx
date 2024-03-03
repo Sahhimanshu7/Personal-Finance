@@ -11,19 +11,7 @@ function emailValidator(email) {
   return pattern.test(email);
 }
 
-function userNameValidator(username) {
-  async function getUserName(username) {
-    await axios.get(`http://localhost:8080/api/auth/user/${username}`)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      throw new Error("User error " + error);
-    })
-  }
 
-  if (username !== "") getUserName(username);
-}
 
 export default function Register() {
   const navigate = useNavigate();
@@ -58,12 +46,17 @@ export default function Register() {
         userName: username
       })
       .then((response) => {
-        console.log(response.status, response.data);
+        if(response.data == 'userName is taken!') {
+          setError("Username is already taken, try something else.");
+          return;
+        } else {
+          setCurrentUser(response.data.userName);
+          navigate("/profile");
+        }
       })
       .catch((error) => {
         throw new Error("Register error " + error);
       });
-      navigate("/profile");
     } catch (error) {
       setError("Failed to Register, Please try again!");
     }
@@ -97,7 +90,6 @@ export default function Register() {
             id="username"
             onChange={(e) => {
               setUsername(e.target.value);
-              userNameValidator(username);
             }}
           />
 

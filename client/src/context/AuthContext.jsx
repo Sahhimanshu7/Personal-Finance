@@ -1,14 +1,14 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
-const AuthContext = createContext();
+const AuthContext = React.createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }){
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState();
+  const [currentUser, setCurrentUser] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const value = {
@@ -22,7 +22,7 @@ export function AuthProvider({ children }){
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   )
 }

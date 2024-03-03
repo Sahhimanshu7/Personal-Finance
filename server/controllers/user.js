@@ -3,11 +3,16 @@ import bcryptjs from 'bcryptjs';
 
 // registering new user
 export const createUser = async (req,res) => {
+  // checking if the userName exists already
+    const userCheck = await User.findOne({userName:req.body.userName});
+    if(userCheck) {
+      res.status(200).json("userName is taken!");
+      return;
+    }
   try {
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(req.body.password, salt);
-
-    // Creating the user
+    // creating the user
         try {
           const newUser = new User({
             userName: req.body.userName,
@@ -17,7 +22,7 @@ export const createUser = async (req,res) => {
             email: req.body.email
           });
           const user = await newUser.save();
-          res.status(200).send(user + " signed up successfully!");
+          res.status(200).json(user);
         } catch (error) {
           throw new Error("Error with creating newUser " + error);
       }
