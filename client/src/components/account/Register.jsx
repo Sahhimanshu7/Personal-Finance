@@ -121,6 +121,11 @@ export default function Register() {
               Register
           </button>
         </form>
+        <Link to= "/login">
+          <p className="link-to-login">
+              Already have an account? Login.
+          </p>
+        </Link>
       </div>
     </div>
   )

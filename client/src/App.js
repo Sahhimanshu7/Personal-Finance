@@ -6,21 +6,25 @@ import Login from './components/account/Login';
 import Register from './components/account/Register';
 import Profile from './components/account/Profile';
 import WithPrivateRoute from './utils/WithPrivateRoute';
+import HomeRenderer from './components/layouts/HomeRenderer';
+import LoadingScreen from './components/layouts/LoadingScreen';
 
-function Dummmy(){
-  return <p>Hello</p>;
-}
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <LoadingScreen />
         <Routes>
           <Route exact path='/login' element = {<Login />} />
-          <Route exact path='/' element={<Dummmy />} />
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/profile' element={
             <WithPrivateRoute>
               <Profile />
+            </WithPrivateRoute>
+          } />
+          <Route exact path='/' element={
+            <WithPrivateRoute>
+              <HomeRenderer />
             </WithPrivateRoute>
           } />
         </Routes>

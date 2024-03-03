@@ -1,8 +1,12 @@
 import { useAuth } from "../../context/AuthContext"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Profile() {
-  console.log(currentUser);
+  const navigate = useNavigate();
+
   return(
-    <h1>Profile</h1>
+    <Link to="/">
+      Home
+    </Link>
   )
 }
