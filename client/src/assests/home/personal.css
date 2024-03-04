@@ -1,0 +1,105 @@
+.personal{
+  width: 90vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-header {
+  color: green;
+  font-size: 30px;
+
+  display: flex;
+  align-items: center;
+}
+
+.vertical-line {
+  border: 1px solid black;
+  width: 350px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.mid{
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-dates{
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.years{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selector-year select{
+  outline: none;
+  border: none;
+  font-size: 20px;
+  background-color: whitesmoke;
+}
+
+.choose-year{
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 10px;
+}
+.selector-month{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.months{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose-month{
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 10px;
+}
+
+.selector-month button{
+  width: 200%;
+  background-color: white;
+  border: none;
+  margin: 5px 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.load-data{
+  border: none;
+  border-radius: 20px;
+  padding: 5px 8px;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.selected-month{
+  background-color: #979292 !important;
+  color: white;
+}
+
+.list-items{
+  display: flex;
+  justify-content: space-around;
+  width: 60vw;
+}

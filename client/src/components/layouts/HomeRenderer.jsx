@@ -5,6 +5,10 @@ import Personal from '../home/Personal';
 import Profile from '../account/Profile';
 import "../../assests/layouts/homeRenderer.css"
 
+import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility';
+import GroupIcon from '@mui/icons-material/Group';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 function HomeRenderer() {
   const [selected, setSelected] = useState("Personal");
   return (
@@ -14,19 +18,19 @@ function HomeRenderer() {
             className='Personal'
             onClick={(e) => setSelected("Personal")}
           >
-            Personal
+            <SettingsAccessibilityIcon />
           </button>
           <button
             className='Groups'
             onClick={(e) => setSelected("Groups")}
           >
-            Groups
+            <GroupIcon />
           </button>
           <button
             className='Profile'
             onClick={(e) => setSelected("Profile")}
           >
-            Profile
+            <AccountCircleIcon />
           </button>
         </div>
         <div className='horizontal-line'>
