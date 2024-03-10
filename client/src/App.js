@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import Login from './components/account/Login';
 import Register from './components/account/Register';
@@ -8,12 +7,16 @@ import Profile from './components/account/Profile';
 import WithPrivateRoute from './utils/WithPrivateRoute';
 import HomeRenderer from './components/layouts/HomeRenderer';
 import LoadingScreen from './components/layouts/LoadingScreen';
+import Expenses from './components/home/Expenses';
+
+import './App.css';
+import { Experimental_CssVarsProvider } from '@mui/material';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <LoadingScreen />
+        <LoadingScreen />   {/* Renders a loading screen when enabled. */}
         <Routes>
           <Route exact path='/login' element = {<Login />} />
           <Route exact path='/register' element={<Register />} />
@@ -25,6 +28,11 @@ function App() {
           <Route exact path='/' element={
             <WithPrivateRoute>
               <HomeRenderer />
+            </WithPrivateRoute>
+          } />
+          <Route exact path='/add-expense' element={
+            <WithPrivateRoute>
+              <Expenses />
             </WithPrivateRoute>
           } />
         </Routes>

@@ -1,6 +1,7 @@
 import React from 'react'
 import DatePicker from 'react-date-picker';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
@@ -15,6 +16,8 @@ function Personal() {
   const [activeButton, setActiveButton] = useState(""); // Track active button
 
   const [dataSelected, setDataSelected] = useState("expense");
+
+  const navigate = useNavigate();
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -93,6 +96,7 @@ function Personal() {
       <div className='add-buttons'>
         <button 
           className='add-expense'
+          onClick={() => navigate("/add-expense")}
         >
           Add Expense
         </button>

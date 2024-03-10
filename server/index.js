@@ -9,6 +9,7 @@ import { rateLimiterUsingThirdParty } from "./middleware/rateLimit.js";
 import fourOhFour from "./middleware/fourOhFour.js";
 
 import userRoutes from "./routes/userRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
 }));
+
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(helmet());
@@ -31,6 +33,9 @@ const PORT = process.env.PORT || 8080;
 
 // Auth Routes
 app.use("/api/auth/user", userRoutes);
+
+// Expense Routes
+app.use('/api/expense', expenseRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
