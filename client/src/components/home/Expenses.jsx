@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useId } from 'react'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
+import { useAuth } from '../../context/AuthContext';
 
 function Expenses() {
   const [title, setTitle] = useState("");
@@ -8,12 +11,43 @@ function Expenses() {
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
 
+  const { currentUser, loading, setLoading, setError } = useAuth();
+
+  const id = useId();
+
   const navigate = useNavigate();
 
+  /*
+  * The group members is null 
+  */
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    navigate("/");
+    if (title == "") {
+      setError("Invalid Title!");
+      return;
+    } else if (amount == "") {
+      setError("Invalid Amount!");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await axios.post("http://localhost:8080/api/expense/create-expense", {
+        id: id,
+        creator: currentUser,
+        title: title,
+        amount: amount,
+        description: description,
+        category: category,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+      setLoading(false);
+      navigate("/");
+    } catch (error) {
+      setError("Failed to Add Expenses!");
+    }
   };
 
   return (
@@ -49,6 +83,7 @@ function Expenses() {
           />
           <button 
           type='submit'
+          disabled={loading}
           >
             Add
           </button>
