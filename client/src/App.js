@@ -11,6 +11,7 @@ import Expenses from './components/home/Expenses';
 
 import './App.css';
 import { Experimental_CssVarsProvider } from '@mui/material';
+import Incomes from './components/home/Incomes';
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
           <Route exact path='/add-expense' element={
             <WithPrivateRoute>
               <Expenses />
+            </WithPrivateRoute>
+          } />
+          <Route exact path='/add-income' element={
+            <WithPrivateRoute>
+              <Incomes />
             </WithPrivateRoute>
           } />
         </Routes>

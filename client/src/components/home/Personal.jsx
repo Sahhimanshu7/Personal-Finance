@@ -102,6 +102,7 @@ function Personal() {
         </button>
         <button 
           className='add-income'
+          onClick={() => navigate("/add-income")}
         >
           Add Income
         </button>

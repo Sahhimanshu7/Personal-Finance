@@ -1,5 +1,4 @@
-import React, { useId } from 'react'
-import { useState } from 'react';
+import React, { useId, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -93,4 +92,4 @@ function Expenses() {
   )
 }
 
-export default Expenses
+export default Expenses;
