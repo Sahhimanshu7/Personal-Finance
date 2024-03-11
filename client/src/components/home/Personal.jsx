@@ -7,6 +7,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 import 'react-date-picker/dist/DatePicker.css';
 import "../../assests/home/personal.css";
+import ExpenseLoader from './loadDatas/ExpenseLoader';
 
 function Personal() {
   const [year, setYear] = useState(2023);
@@ -79,6 +80,7 @@ function Personal() {
             dataSelected === "expenses" ? 
             <div className='expenses'>
               <h1 className='expenses-list'>Expenses</h1>
+              <ExpenseLoader year = { year } month={ month } />
               <button onClick={(e) => setDataSelected("income")}>
                 Income
               </button>

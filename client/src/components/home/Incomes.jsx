@@ -32,7 +32,7 @@ function Incomes() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:8080/api/expense/create-income", {
+      await axios.post("http://localhost:8080/api/income/create-income", {
         id: id,
         creator: currentUser,
         title: title,

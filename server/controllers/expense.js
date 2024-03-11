@@ -26,3 +26,14 @@ export const deleteExpense = async (req, res) => {
     res.status(500).json("Error deleting expense: " + error);
   }
 }
+
+export const getExpense = async (req, res) => {
+  let expenses = [];
+
+  try {
+    const expenseRecords = await Expense.find();
+    console.log(expenseRecords);
+  } catch (error) {
+    console.log(error);
+  }
+}
