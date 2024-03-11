@@ -10,6 +10,7 @@ import fourOhFour from "./middleware/fourOhFour.js";
 
 import userRoutes from "./routes/userRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
+import incomeRoutes from "./routes/incomeRoutes.js";
 
 const app = express();
 
@@ -36,6 +37,9 @@ app.use("/api/auth/user", userRoutes);
 
 // Expense Routes
 app.use('/api/expense', expenseRoutes);
+
+// Income Routes
+app.use("/api/income", incomeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
