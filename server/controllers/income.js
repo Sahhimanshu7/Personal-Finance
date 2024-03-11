@@ -1,4 +1,4 @@
-import Income from "../models/Income";
+import Income from "../models/Income.js";
 
 export const createIncome = async (req, res) => {
   try {

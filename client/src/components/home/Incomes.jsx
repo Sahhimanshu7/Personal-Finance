@@ -1,8 +1,3 @@
-/*
-Needs to change from expense to income
-*/
-
-
 import React, { useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -50,19 +45,19 @@ function Incomes() {
       setLoading(false);
       navigate("/");
     } catch (error) {
-      setError("Failed to Add Expenses!");
+      setError("Failed to Add Income!");
     }
   };
 
   return (
-    <div className='expense-main'>
-      <h1 className='expense-head'>
+    <div className='income-main'>
+      <h1 className='income-head'>
         Add income.
       </h1>
       <div className='form-main'>
         <form className='form' onSubmit={handleFormSubmit}>
           <input 
-            className='title input-expense'
+            className='title input-income'
             id='title'
             onChange={(e) => setTitle(e.target.value)}
             placeholder='Title...'
